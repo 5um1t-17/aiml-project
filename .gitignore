@@ -9,6 +9,7 @@ __pycache__/
 
 # Local reports, development tools and temporary work.
 /docs/
+/reports and info/
 /tmp/
 /test-db-*/
 /test_*.py

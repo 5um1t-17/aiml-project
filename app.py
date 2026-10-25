@@ -14,7 +14,7 @@ import personal_loans as personal
 from configuration import database_target,signing_keys
 from postgres_backend import is_postgres
 from prediction import validate, run_models, explain_linear, summarize_predictions, assess_support, legacy_screening
-from database import init_database, save_application, save_batch, query_applications, get_application, dashboard_stats, export_records, record_review,DATABASE_ERRORS
+from database import init_database, save_application, save_batch, query_applications, get_application, dashboard_stats, export_records, record_review,DATABASE_ERRORS,REVIEWER_ROLES
 
 ROOT = Path(__file__).parent
 app = Flask(__name__)
@@ -261,7 +261,7 @@ def review(application_id):
         notes = request.form.get('notes', '').strip()
         if not 2 <= len(reviewer) <= 80:
             raise ValueError('Enter the reviewer name (2–80 characters).')
-        if role not in ('Employee', 'Manager') or decision not in ('accepted', 'rejected', 'pending'):
+        if role not in REVIEWER_ROLES or decision not in ('accepted', 'rejected', 'pending'):
             raise ValueError('Choose a reviewer role and a staff decision.')
         if not 10 <= len(notes) <= 2000:
             raise ValueError('Add review notes (10–2,000 characters) explaining your decision.')

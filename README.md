@@ -138,7 +138,7 @@ The data directory contains only `kaggle_loan_approval.csv` and `personal_loan_d
 
 The mean score is the arithmetic average of the three model approval scores. A flagged case shows **Manual review required**. Principal-only repayment checks exclude interest, existing debts and living costs; passing these checks does not certify eligibility.
 
-New applications start pending. A staff reviewer explicitly records acceptance, rejection or continued review with notes. Demo Employee/Manager entries are clearly identified as simulated examples. Reviewer names and roles are self-entered demo fields rather than authenticated staff accounts.
+New applications start pending. A staff reviewer explicitly records acceptance, rejection or continued review with notes. Demo Credit Manager/Credit Committee entries are clearly identified as simulated examples. Reviewer names and roles are self-entered demo fields rather than authenticated staff accounts.
 
 This project is intended for educational demonstrations. Institutional use requires suitable data, independent validation, calibration and appropriate authentication/access controls.
 
