@@ -19,3 +19,4 @@ test-db-*/
 /models/metrics.json
 /docs/archive/
 /data/loans.csv
+/docs/MODEL_AUDIT.md
