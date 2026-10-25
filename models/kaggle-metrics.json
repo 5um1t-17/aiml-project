@@ -1,0 +1,630 @@
+{
+  "model_version": "kaggle-archit-full-v2",
+  "input_schema": "kaggle-archit-v1",
+  "rows": 4269,
+  "train_rows": 3415,
+  "test_rows": 854,
+  "features": [
+    "no_of_dependents",
+    "income_annum",
+    "loan_amount",
+    "loan_term",
+    "cibil_score",
+    "residential_assets_value",
+    "commercial_assets_value",
+    "luxury_assets_value",
+    "bank_asset_value",
+    "education",
+    "self_employed"
+  ],
+  "best_model": "Decision Tree",
+  "approved": 2656,
+  "declined": 1613,
+  "missing": 28,
+  "models": [
+    {
+      "name": "Logistic Regression",
+      "accuracy": 0.9449648711943794,
+      "balanced_accuracy": 0.9472547270469294,
+      "precision": 0.97265625,
+      "recall": 0.9378531073446328,
+      "decline_recall": 0.9566563467492261,
+      "f1": 0.9549376797698945,
+      "auc": 0.9854879805029357,
+      "brier": 0.044779427185339046,
+      "confusion": [
+        [
+          309,
+          14
+        ],
+        [
+          33,
+          498
+        ]
+      ],
+      "roc": {
+        "fpr": [
+          0.0,
+          0.0,
+          0.0,
+          0.0030959752321981426,
+          0.0030959752321981426,
+          0.006191950464396285,
+          0.006191950464396285,
+          0.009287925696594427,
+          0.009287925696594427,
+          0.01238390092879257,
+          0.01238390092879257,
+          0.015479876160990712,
+          0.015479876160990712,
+          0.018575851393188854,
+          0.018575851393188854,
+          0.021671826625386997,
+          0.021671826625386997,
+          0.02476780185758514,
+          0.02476780185758514,
+          0.02786377708978328,
+          0.02786377708978328,
+          0.030959752321981424,
+          0.030959752321981424,
+          0.034055727554179564,
+          0.034055727554179564,
+          0.04643962848297214,
+          0.04643962848297214,
+          0.04953560371517028,
+          0.04953560371517028,
+          0.06811145510835913,
+          0.06811145510835913,
+          0.07430340557275542,
+          0.07430340557275542,
+          0.07739938080495357,
+          0.07739938080495357,
+          0.09597523219814241,
+          0.09597523219814241,
+          0.09907120743034056,
+          0.09907120743034056,
+          0.15170278637770898,
+          0.15170278637770898,
+          0.15789473684210525,
+          0.15789473684210525,
+          0.16718266253869968,
+          0.16718266253869968,
+          0.17647058823529413,
+          0.17647058823529413,
+          0.18885448916408668,
+          0.18885448916408668,
+          0.19814241486068113,
+          0.19814241486068113,
+          0.21362229102167182,
+          0.21362229102167182,
+          0.21671826625386997,
+          0.21671826625386997,
+          0.24458204334365324,
+          0.24458204334365324,
+          0.29102167182662536,
+          0.29102167182662536,
+          0.3281733746130031,
+          0.3281733746130031,
+          0.33126934984520123,
+          0.33126934984520123,
+          0.5572755417956656,
+          0.5572755417956656,
+          0.6934984520123839,
+          0.6934984520123839,
+          1.0
+        ],
+        "tpr": [
+          0.0,
+          0.0018832391713747645,
+          0.5555555555555556,
+          0.5555555555555556,
+          0.5894538606403014,
+          0.5894538606403014,
+          0.7589453860640302,
+          0.7589453860640302,
+          0.7853107344632768,
+          0.7853107344632768,
+          0.8041431261770244,
+          0.8041431261770244,
+          0.8587570621468926,
+          0.8587570621468926,
+          0.8757062146892656,
+          0.8757062146892656,
+          0.8832391713747646,
+          0.8832391713747646,
+          0.9133709981167608,
+          0.9133709981167608,
+          0.9209039548022598,
+          0.9209039548022598,
+          0.9265536723163842,
+          0.9265536723163842,
+          0.9378531073446328,
+          0.9378531073446328,
+          0.9397363465160076,
+          0.9397363465160076,
+          0.9548022598870056,
+          0.9548022598870056,
+          0.9566854990583804,
+          0.9566854990583804,
+          0.9585687382297552,
+          0.9585687382297552,
+          0.9642184557438794,
+          0.9642184557438794,
+          0.9661016949152542,
+          0.9661016949152542,
+          0.9698681732580038,
+          0.9698681732580038,
+          0.975517890772128,
+          0.975517890772128,
+          0.9774011299435028,
+          0.9774011299435028,
+          0.9792843691148776,
+          0.9792843691148776,
+          0.9811676082862524,
+          0.9811676082862524,
+          0.9830508474576272,
+          0.9830508474576272,
+          0.9849340866290018,
+          0.9849340866290018,
+          0.9868173258003766,
+          0.9868173258003766,
+          0.9887005649717514,
+          0.9887005649717514,
+          0.9905838041431262,
+          0.9905838041431262,
+          0.992467043314501,
+          0.992467043314501,
+          0.9943502824858758,
+          0.9943502824858758,
+          0.9962335216572504,
+          0.9962335216572504,
+          0.9981167608286252,
+          0.9981167608286252,
+          1.0,
+          1.0
+        ]
+      },
+      "cv_f1": 0.9444387143510861,
+      "cv_std": 0.013191203265129882,
+      "cv_balanced_accuracy": 0.9362872777017784,
+      "baseline_cv_balanced_accuracy": 0.908296397628819,
+      "pipeline_variant": "Source + financial ratios",
+      "selected_params": {
+        "classifier__C": 10,
+        "classifier__class_weight": "balanced"
+      }
+    },
+    {
+      "name": "Decision Tree",
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "decline_recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0,
+      "brier": 0.0002947561628634654,
+      "confusion": [
+        [
+          323,
+          0
+        ],
+        [
+          0,
+          531
+        ]
+      ],
+      "roc": {
+        "fpr": [
+          0.0,
+          0.0,
+          0.0,
+          0.0030959752321981426,
+          1.0
+        ],
+        "tpr": [
+          0.0,
+          0.943502824858757,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "cv_f1": 0.9990582666341485,
+      "cv_std": 0.0008820241858815273,
+      "cv_balanced_accuracy": 0.9987542179662562,
+      "baseline_cv_balanced_accuracy": 0.9635248518011856,
+      "pipeline_variant": "Source + financial ratios",
+      "selected_params": {
+        "classifier__class_weight": null,
+        "classifier__max_depth": 4,
+        "classifier__min_samples_leaf": 2
+      }
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 0.9953161592505855,
+      "balanced_accuracy": 0.9938080495356036,
+      "precision": 0.9925233644859813,
+      "recall": 1.0,
+      "decline_recall": 0.9876160990712074,
+      "f1": 0.9962476547842402,
+      "auc": 0.9999708476908455,
+      "brier": 0.005808913295511365,
+      "confusion": [
+        [
+          319,
+          4
+        ],
+        [
+          0,
+          531
+        ]
+      ],
+      "roc": {
+        "fpr": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0030959752321981426,
+          0.0030959752321981426,
+          1.0
+        ],
+        "tpr": [
+          0.0,
+          0.0018832391713747645,
+          0.007532956685499058,
+          0.018832391713747645,
+          0.022598870056497175,
+          0.9905838041431262,
+          0.9905838041431262,
+          1.0,
+          1.0
+        ]
+      },
+      "cv_f1": 0.9969508154942816,
+      "cv_std": 0.002172849173869174,
+      "cv_balanced_accuracy": 0.995265845873233,
+      "baseline_cv_balanced_accuracy": 0.9730497036023712,
+      "pipeline_variant": "Source + financial ratios",
+      "selected_params": {
+        "classifier__class_weight": null,
+        "classifier__max_depth": 10,
+        "classifier__min_samples_leaf": 2
+      }
+    }
+  ],
+  "ensemble": {
+    "accuracy": 0.9988290398126464,
+    "balanced_accuracy": 0.9984520123839009,
+    "precision": 0.9981203007518797,
+    "recall": 1.0,
+    "decline_recall": 0.9969040247678018,
+    "f1": 0.9990592662276576,
+    "auc": 1.0,
+    "brier": 0.007729139228248195,
+    "confusion": [
+      [
+        322,
+        1
+      ],
+      [
+        0,
+        531
+      ]
+    ],
+    "roc": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0018832391713747645,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "baseline_ensemble": {
+    "accuracy": 0.9730679156908665,
+    "balanced_accuracy": 0.9722790692250733,
+    "precision": 0.9810606060606061,
+    "recall": 0.975517890772128,
+    "decline_recall": 0.9690402476780186,
+    "f1": 0.9782813975448537,
+    "auc": 0.9959478290275372,
+    "brier": 0.02221558550763898,
+    "confusion": [
+      [
+        313,
+        10
+      ],
+      [
+        13,
+        518
+      ]
+    ],
+    "roc": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        0.0030959752321981426,
+        0.0030959752321981426,
+        0.006191950464396285,
+        0.006191950464396285,
+        0.009287925696594427,
+        0.009287925696594427,
+        0.015479876160990712,
+        0.015479876160990712,
+        0.018575851393188854,
+        0.018575851393188854,
+        0.02786377708978328,
+        0.02786377708978328,
+        0.030959752321981424,
+        0.030959752321981424,
+        0.04024767801857585,
+        0.04024767801857585,
+        0.04643962848297214,
+        0.04643962848297214,
+        0.04953560371517028,
+        0.04953560371517028,
+        0.058823529411764705,
+        0.058823529411764705,
+        0.06501547987616099,
+        0.06501547987616099,
+        0.12693498452012383,
+        0.12693498452012383,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0018832391713747645,
+        0.5084745762711864,
+        0.5084745762711864,
+        0.6591337099811676,
+        0.6591337099811676,
+        0.9133709981167608,
+        0.9133709981167608,
+        0.96045197740113,
+        0.96045197740113,
+        0.9661016949152542,
+        0.9661016949152542,
+        0.967984934086629,
+        0.967984934086629,
+        0.9717514124293786,
+        0.9717514124293786,
+        0.9811676082862524,
+        0.9811676082862524,
+        0.9868173258003766,
+        0.9868173258003766,
+        0.992467043314501,
+        0.992467043314501,
+        0.9943502824858758,
+        0.9943502824858758,
+        0.9962335216572504,
+        0.9962335216572504,
+        0.9981167608286252,
+        0.9981167608286252,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "baseline_accuracy": 0.6217798594847775,
+  "seed": 42,
+  "support": {
+    "annual_income_min": 200000.0,
+    "annual_income_max": 9900000.0,
+    "numeric_ranges": {
+      "no_of_dependents": {
+        "min": 0.0,
+        "max": 5.0
+      },
+      "income_annum": {
+        "min": 200000.0,
+        "max": 9900000.0
+      },
+      "loan_amount": {
+        "min": 300000.0,
+        "max": 39500000.0
+      },
+      "loan_term": {
+        "min": 2.0,
+        "max": 20.0
+      },
+      "cibil_score": {
+        "min": 300.0,
+        "max": 900.0
+      },
+      "residential_assets_value": {
+        "min": 0.0,
+        "max": 29100000.0
+      },
+      "commercial_assets_value": {
+        "min": 0.0,
+        "max": 19400000.0
+      },
+      "luxury_assets_value": {
+        "min": 300000.0,
+        "max": 39200000.0
+      },
+      "bank_asset_value": {
+        "min": 0.0,
+        "max": 14700000.0
+      }
+    },
+    "term_counts": {
+      "6": 490,
+      "12": 456,
+      "4": 447,
+      "10": 436,
+      "18": 422,
+      "16": 412,
+      "20": 411,
+      "14": 405,
+      "2": 404,
+      "8": 386
+    },
+    "rare_term_warning_count": 10,
+    "train_rows": 4269,
+    "term_unit": "years",
+    "term_unit_status": "Explicit user-selected project assumption; not specified by publisher metadata."
+  },
+  "source": {
+    "ref": "architsharma01/loan-approval-prediction-dataset",
+    "title": "Loan-Approval-Prediction-Dataset",
+    "source_url": "https://www.kaggle.com/datasets/architsharma01/loan-approval-prediction-dataset",
+    "license_reported_by_kaggle": "MIT",
+    "version": 1,
+    "last_updated": "2023-07-16T16:31:20.923Z",
+    "description": "The loan approval dataset is a collection of financial records and associated information used to determine the eligibility of individuals or organizations for obtaining loans from a lending institution. It includes various factors such as cibil score, income, employment status, loan term, loan amount, assets value, and loan status. This dataset is commonly used in machine learning and data analysis to develop models and algorithms that predict the likelihood of loan approval based on the given features.",
+    "sha256": "4b5cd093d178378f4cfa8c107adb6e599b88be9d8a3b51f3b99c0d5914154e54",
+    "rows": 4269,
+    "term_unit": "years",
+    "term_unit_status": "Project assumption explicitly chosen by the user; publisher metadata does not specify the unit.",
+    "income_unit": "annual",
+    "money_unit": "Full source units; currency not specified by publisher metadata.",
+    "provenance_note": "Publisher description does not identify a collecting institution or establish whether records were collected or generated."
+  },
+  "dataset_sha256": "4b5cd093d178378f4cfa8c107adb6e599b88be9d8a3b51f3b99c0d5914154e54",
+  "audit": {
+    "exact_duplicate_rows": 0,
+    "duplicate_ids": 0,
+    "conflicting_feature_groups": 0,
+    "original_missing": 0,
+    "negative_asset_values": {
+      "residential_assets_value": 28,
+      "commercial_assets_value": 0,
+      "luxury_assets_value": 0,
+      "bank_asset_value": 0
+    },
+    "negative_asset_treatment": "Negative asset values replaced with missing; fold-fitted median imputation. All target labels and rows retained.",
+    "missing_by_feature": {
+      "no_of_dependents": 0,
+      "income_annum": 0,
+      "loan_amount": 0,
+      "loan_term": 0,
+      "cibil_score": 0,
+      "residential_assets_value": 28,
+      "commercial_assets_value": 0,
+      "luxury_assets_value": 0,
+      "bank_asset_value": 0,
+      "education": 0,
+      "self_employed": 0
+    }
+  },
+  "selection_note": "Training-only 5-fold CV balanced accuracy chooses source/engineered variants and hyperparameters. CV values are selection estimates, not external validation.",
+  "holdout_note": "The 854-row holdout is excluded from fitting and parameter selection of the evaluation models. After evaluation, fixed selected pipelines are cloned and refitted on all 4269 source rows for website inference. Final all-row models do not have a separate unseen-test accuracy measurement. No external bank validation.",
+  "calibrated": false,
+  "production_train_rows": 4269,
+  "evaluation_model_version": "kaggle-archit-v1",
+  "evaluation_artifact": "models/kaggle-evaluation-pipelines.joblib",
+  "evaluation_support": {
+    "annual_income_min": 200000.0,
+    "annual_income_max": 9900000.0,
+    "numeric_ranges": {
+      "no_of_dependents": {
+        "min": 0.0,
+        "max": 5.0
+      },
+      "income_annum": {
+        "min": 200000.0,
+        "max": 9900000.0
+      },
+      "loan_amount": {
+        "min": 300000.0,
+        "max": 38800000.0
+      },
+      "loan_term": {
+        "min": 2.0,
+        "max": 20.0
+      },
+      "cibil_score": {
+        "min": 300.0,
+        "max": 900.0
+      },
+      "residential_assets_value": {
+        "min": 0.0,
+        "max": 29100000.0
+      },
+      "commercial_assets_value": {
+        "min": 0.0,
+        "max": 19400000.0
+      },
+      "luxury_assets_value": {
+        "min": 300000.0,
+        "max": 39200000.0
+      },
+      "bank_asset_value": {
+        "min": 0.0,
+        "max": 14700000.0
+      }
+    },
+    "term_counts": {
+      "6": 386,
+      "4": 363,
+      "10": 358,
+      "12": 355,
+      "18": 342,
+      "20": 331,
+      "2": 330,
+      "16": 324,
+      "14": 317,
+      "8": 309
+    },
+    "rare_term_warning_count": 10,
+    "train_rows": 3415,
+    "term_unit": "years",
+    "term_unit_status": "Explicit user-selected project assumption; not specified by publisher metadata."
+  },
+  "deployment_note": "The website uses selected pipelines refitted on all source rows after evaluation. Reported test metrics belong to separate 3415-row evaluation models, not the all-row refits. Smaller amounts absent from the source remain outside training coverage.",
+  "training_run": {
+    "completed_at_utc": "2026-10-25T15:31:45.193057+00:00",
+    "split": {
+      "seed": 42,
+      "source_rows": 4269,
+      "train_rows": 3415,
+      "test_rows": 854,
+      "overlapping_row_indices": 0,
+      "identical_feature_groups_crossing_holdout": 0,
+      "train_label_counts": {
+        "0": 1290,
+        "1": 2125
+      },
+      "test_label_counts": {
+        "0": 323,
+        "1": 531
+      },
+      "target_and_id_excluded": true
+    },
+    "fitted_models": {
+      "Logistic Regression": {
+        "evaluation_fit_rows": 3415,
+        "final_fit_rows": 4269
+      },
+      "Decision Tree": {
+        "evaluation_fit_rows": 3415,
+        "final_fit_rows": 4269
+      },
+      "Random Forest": {
+        "evaluation_fit_rows": 3415,
+        "final_fit_rows": 4269
+      }
+    },
+    "convergence_warnings_are_errors": true,
+    "environment": {
+      "python": "3.14.3",
+      "scikit_learn": "1.9.1",
+      "pandas": "3.1.0",
+      "numpy": "2.5.4",
+      "joblib": "1.6.0"
+    }
+  }
+}

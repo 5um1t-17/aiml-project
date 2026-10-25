@@ -1,0 +1,21 @@
+.venv/
+.env
+.env.*
+!.env.example
+.vercel/
+__pycache__/
+*.pyc
+data/*.db
+data/*.db-*
+data/backups/
+
+tmp/
+test-db-*/
+
+# Historical snapshots are kept locally, not in the active project repository.
+/models/archive/
+/models/*-before-*
+/models/pipelines.joblib
+/models/metrics.json
+/docs/archive/
+/data/loans.csv

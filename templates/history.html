@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}
+<section class="page-heading"><div><p class="eyebrow">STAFF APPLICATION QUEUE</p><h1>Applications</h1><p class="lede">Review average model scores, record staff decisions, and export the application history.</p></div><a class="button-primary" href="/predict">＋ Check application</a></section>
+{% if saved is none %}<section class="panel"><h2>History is temporarily unavailable</h2><p class="muted">The local database could not be read. Try refreshing this page.</p></section>{% else %}
+<section class="panel"><div class="filter-toolbar"><form method="get" class="filters"><label class="sr-only" for="search">Search applications</label><input id="search" name="q" value="{{ search }}" placeholder="Search ID, education, or demo label…"><label class="sr-only" for="status">Application status</label><select name="status" id="status">
+<option value="">All applications</option>
+<option value="pending" {{ 'selected' if status == 'pending' }}>Pending review</option>
+<option value="accepted" {{ 'selected' if status == 'accepted' }}>Accepted by staff</option>
+<option value="rejected" {{ 'selected' if status == 'rejected' }}>Rejected by staff</option>
+<option value="approved" {{ 'selected' if status == 'approved' }}>Raw score ≥ 50%</option>
+<option value="declined" {{ 'selected' if status == 'declined' }}>Raw score < 50%</option>
+</select><button class="secondary" type="submit">Apply filters</button>{% if search or status %}<a class="text-link" href="/history">Clear</a>{% endif %}</form><a class="secondary" href="{{ url_for('export_csv', q=search, status=status) }}">↓ Export CSV</a></div><p class="muted">{{ saved.total }} matching application{{ '' if saved.total == 1 else 's' }} · Raw mean score; support flags shown separately · Staff decisions recorded separately · Times in UTC</p>
+<p class="fine">Rows marked DEMO are fictional examples. New application checks are saved normally.</p>
+{% set records = saved.records %}{% include '_application_table.html' %}
+{% if not saved.total and not search and not status %}<p class="muted">No saved applications yet. <a href="/batch">Upload our sample CSV</a> or check a single application.</p>{% endif %}
+<nav class="pagination" aria-label="History pagination">{% if saved.page > 1 %}<a class="secondary" href="{{ url_for('history', page=saved.page-1, q=search, status=status) }}">← Previous</a>{% endif %}<span class="muted">Page {{ saved.page }} of {{ saved.pages }}</span>{% if saved.page < saved.pages %}<a class="secondary" href="{{ url_for('history', page=saved.page+1, q=search, status=status) }}">Next →</a>{% endif %}</nav><p class="fine">Export includes each model score, the average, and the latest staff decision for all matching applications.</p></section>{% endif %}
+{% endblock %}
