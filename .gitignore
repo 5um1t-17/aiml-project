@@ -21,3 +21,5 @@ test-db-*/
 /data/loans.csv
 /docs/MODEL_AUDIT.md
 /docs/
+/test_*.py
+/models/*-evaluation-pipelines.joblib
