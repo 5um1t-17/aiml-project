@@ -2,7 +2,7 @@ from pathlib import Path
 import csv
 import io
 import json
-import sqlite3
+import os
 import secrets
 import hmac
 import joblib
@@ -20,7 +20,6 @@ ROOT = Path(__file__).parent
 app = Flask(__name__)
 app.add_template_filter(amount_in_words, 'amount_words')
 app.add_template_filter(format_amount, 'amount_number')
-import os
 secret_key,receipt_key=signing_keys()
 app.config.update(MAX_CONTENT_LENGTH=1024 * 1024,DATABASE=database_target())
 app.config.update(SECRET_KEY=secret_key,SESSION_COOKIE_HTTPONLY=True,SESSION_COOKIE_SAMESITE='Lax',SESSION_COOKIE_SECURE=bool(os.environ.get('VERCEL')))
@@ -28,14 +27,12 @@ receipts = URLSafeSerializer(receipt_key, salt='local-batch-receipt')
 # PostgreSQL tables and historical records are prepared by the explicit
 # migration command, never seeded or reset during a serverless cold start.
 if not is_postgres(app.config['DATABASE']):init_database(app.config['DATABASE'])
-if not (ROOT / 'models/kaggle-pipelines.joblib').exists():
-    from train import train
-    train()
+required_artifacts=('kaggle-pipelines.joblib','kaggle-metrics.json','personal-pipelines.joblib','personal-metrics.json')
+missing=[name for name in required_artifacts if not (ROOT/'models'/name).is_file()]
+if missing:
+    raise RuntimeError('Missing trained model artifacts: '+', '.join(missing)+'. Restore the supplied runtime model files before starting the website.')
 models = joblib.load(ROOT / 'models/kaggle-pipelines.joblib')
 metrics = json.loads((ROOT / 'models/kaggle-metrics.json').read_text())
-if not (ROOT/'models/personal-pipelines.joblib').exists():
-    from train_personal import train as train_small_loans
-    train_small_loans()
 personal_models=joblib.load(ROOT/'models/personal-pipelines.joblib')
 personal_metrics=json.loads((ROOT/'models/personal-metrics.json').read_text())
 from demo_data import seed_demo_if_empty

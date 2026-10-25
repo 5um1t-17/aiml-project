@@ -1,25 +1,33 @@
-.venv/
+# Private settings and local dependencies.
 .env
 .env.*
 !.env.example
+.venv/
 .vercel/
 __pycache__/
 *.pyc
-data/*.db
-data/*.db-*
-data/backups/
 
-tmp/
-test-db-*/
-
-# Historical snapshots are kept locally, not in the active project repository.
-/models/archive/
-/models/*-before-*
-/models/pipelines.joblib
-/models/metrics.json
-/docs/archive/
-/data/loans.csv
-/docs/MODEL_AUDIT.md
+# Local reports, development tools and temporary work.
 /docs/
+/tmp/
+/test-db-*/
 /test_*.py
-/models/*-evaluation-pipelines.joblib
+/train.py
+/train_personal.py
+/training_audit.py
+/check_postgres.py
+/migrate_postgres.py
+/launch.py
+/start.bat
+
+# Only CSVs offered by the running website belong in the data directory.
+/data/*
+!/data/kaggle_loan_approval.csv
+!/data/personal_loan_data.csv
+
+# Keep only the final prediction pipelines and displayed evaluation metrics.
+/models/*
+!/models/kaggle-pipelines.joblib
+!/models/kaggle-metrics.json
+!/models/personal-pipelines.joblib
+!/models/personal-metrics.json

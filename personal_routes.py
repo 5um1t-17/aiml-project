@@ -1,5 +1,5 @@
 """Small-loan endpoints use their own models, schema and source units."""
-import csv,io,sqlite3
+import csv,io
 from flask import request,render_template,jsonify,redirect,url_for,send_file
 from itsdangerous import BadSignature
 import personal_loans as source

@@ -32,10 +32,10 @@ Use Python 3.14 for the environment matching the supplied model artifacts. Open 
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-The repository includes the trained models. Configure the database as described below, then start the website:
+The repository includes the trained models; startup performs inference without retraining. Configure the database as described below, then start the website:
 
 ```powershell
 .\.venv\Scripts\python.exe app.py
@@ -70,22 +70,15 @@ The PostgreSQL database stores applications, saved model scores and staff review
 
 Keep `.env`, local database files and backups out of Git. Only `.env.example`, containing empty settings, belongs in the repository.
 
-## Model training and evaluation
+## Model evaluation
 
-Training code removes source header/category whitespace, handles invalid values and fits preprocessing within training folds. Loan IDs and target labels are excluded from model inputs. Age, gender and education are excluded from the small-loan classifiers.
+The supplied models were trained with source header/category whitespace cleanup, invalid-value handling and preprocessing fitted within training folds. Loan IDs and target labels are excluded from model inputs. Age, gender and education are excluded from the small-loan classifiers.
 
 The asset-based workflow uses training-only five-fold cross-validation for selection. The small-loan workflow uses predeclared model settings and three-fold grouped cross-validation; identical selected-feature groups stay in one split. The publisher's upstream synthetic generation may still make its internal evaluation optimistic.
 
 Displayed accuracy, confusion matrices and ROC curves come from held-out evaluation performed before final refitting. Each final website model is then fitted on every row of its own source dataset. Those final all-row models have no separate unseen-test measurement. Scores are uncalibrated and do not establish real-bank approval probabilities.
 
-To intentionally rebuild the models and refresh evaluation metrics:
-
-```powershell
-.\.venv\Scripts\python.exe train.py
-.\.venv\Scripts\python.exe train_personal.py
-```
-
-Restart the website after rebuilding so it loads the updated artifacts. Rebuilding also produces local evaluation artifacts; these are not required to serve the website.
+This repository contains the website runtime, trained prediction pipelines and saved evaluation metrics. Training scripts, automated tests, evaluation pipeline copies and development reports are maintained outside the runtime repository. The website loads the supplied artifacts directly and reports a clear startup error if one is missing.
 
 ## Main pages
 
@@ -119,20 +112,18 @@ prediction.py          Inference, averaging and explanations
 features.py            Pipeline feature transformers
 amounts.py             Amount-to-words formatting
 demo_data.py           Fictional sample fixtures
-train.py               Asset-based training workflow
-train_personal.py      Small-loan training workflow
-training_audit.py      Split checks and training provenance
 templates/             Website pages
 static/                Styles and JavaScript
-data/                  Source CSVs and source metadata
+data/                  Two source CSVs offered for download
 models/                Final fitted pipelines and metrics
-requirements.txt       Runtime dependency ranges
+requirements.txt       Runtime dependency installation entrypoint
 requirements-lock.txt  Exact tested dependency versions
 .env.example           Empty environment template
-.gitignore             Local-file exclusions
+.gitignore             Runtime allowlist and local-file exclusions
+.gitattributes         Dataset/model byte preservation
 ```
 
-The website loads these model files:
+The models directory contains exactly these runtime files:
 
 ```text
 models/kaggle-pipelines.joblib
@@ -140,6 +131,8 @@ models/kaggle-metrics.json
 models/personal-pipelines.joblib
 models/personal-metrics.json
 ```
+
+The data directory contains only `kaggle_loan_approval.csv` and `personal_loan_data.csv`. Source provenance, preprocessing notes and evaluation results are embedded in the metrics JSON files. Every tracked template and static asset is used by the website. Personal settings, local databases, backups and development files are excluded from Git.
 
 ## Staff review and limitations
 

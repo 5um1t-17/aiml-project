@@ -1,0 +1,3 @@
+# Preserve original dataset bytes and serialized models across platforms.
+/data/*.csv -text
+/models/*.joblib -text -diff
